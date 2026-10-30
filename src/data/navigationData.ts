@@ -39,10 +39,10 @@ export interface SearchEntry {
 }
 
 export const BRAND_LOGO = {
-  src: '/content/dam/mccom/shared/header/ma_symbol.svg',
-  alt: 'Mastercard brand symbol - a global technology company in the payments industry',
-  href: 'https://www.mastercard.com/us/en.html',
-  width: 65,
+  src: '/images/decaspark-emblem.png',
+  alt: 'Decaspark emblem',
+  href: '/',
+  width: 44,
   height: 40,
 };
 
