@@ -78,10 +78,10 @@ body.mccom {
   min-height: 100vh;
 }
 
-/* Production focus-visible & Algolia active-descendant ring from marts clientlib-site */
+/* Focus-visible & Algolia active-descendant ring */
 .mccom *:focus-visible,
 .mccom [data-active='true'] {
-  outline: 2px solid #f37338;
+  outline: 2px solid #141413;
   outline-offset: 3px;
   border-radius: 20px;
 }
@@ -99,14 +99,14 @@ body.mccom {
   border: 0;
 }
 
-/* Skip to main content link from marts clientlib-site */
+/* Skip to main content link */
 .mccom .cmp-page__skiptomaincontent-link {
   position: fixed;
   top: -70px;
   left: 5px;
   padding: 10px;
   z-index: 10000;
-  border: 2px solid #f37338;
+  border: 2px solid #141413;
   border-top: 0;
   border-radius: 0 0 20px 20px;
   background-color: rgba(255, 255, 255, 0.8);

@@ -563,13 +563,13 @@ export const Navbar: React.FC = () => {
             ref={navBarRef}
             className={`navigation-bar${overlayActive ? ' active' : ''}`}
           >
-            {/* Left: Official Mastercard Symbol Logo */}
+            {/* Left: Decaspark Brand Emblem */}
             <div className="navigation-bar__logo-wrapper">
               <div className="navigation-bar__logo navigation-bar__primary-logo">
                 <a
                   ref={logoLinkRef}
                   href={BRAND_LOGO.href}
-                  aria-label="Mastercard Home"
+                  aria-label="Decaspark Home"
                   onKeyDown={handleLogoKeyDown}
                 >
                   <img
