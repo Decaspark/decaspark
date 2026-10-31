@@ -23,7 +23,7 @@ export const App: React.FC = () => {
         </a>
       </div>
       <Navbar />
-      <main id="main" className="mc-empty-page" tabIndex={-1} />
+      <main id="main" className="ds-empty-page" tabIndex={-1} />
     </>
   );
 };

@@ -6,7 +6,7 @@ interface IconProps {
 }
 
 /**
- * Official Mastercard MADE #search vector path (custom-icons.svg, viewBox 0 0 24 24)
+ * Decaspark UI magnifying-glass search icon (viewBox 0 0 24 24)
  */
 export const SearchIcon: React.FC<IconProps> = ({ className, size = 14 }) => (
   <svg
@@ -30,7 +30,7 @@ export const SearchIcon: React.FC<IconProps> = ({ className, size = 14 }) => (
 );
 
 /**
- * Official Mastercard MADE #close-1.5-thick vector path (custom-icons.svg, viewBox 0 0 24 24)
+ * Decaspark UI close / dismiss icon (viewBox 0 0 24 24)
  */
 export const CloseIcon: React.FC<IconProps> = ({ className, size = 14 }) => (
   <svg
@@ -52,7 +52,7 @@ export const CloseIcon: React.FC<IconProps> = ({ className, size = 14 }) => (
 );
 
 /**
- * Official Mastercard MADE #arrow-head-right vector path (icons.svg, viewBox 0 0 24 24)
+ * Decaspark UI right chevron icon (viewBox 0 0 24 24)
  */
 export const ChevronRightIcon: React.FC<IconProps> = ({ className, size = 16 }) => (
   <svg
@@ -74,7 +74,7 @@ export const ChevronRightIcon: React.FC<IconProps> = ({ className, size = 16 }) 
 );
 
 /**
- * Official Mastercard MADE #arrow-head-left vector path (icons.svg, viewBox 0 0 24 24)
+ * Decaspark UI left chevron icon (viewBox 0 0 24 24)
  */
 export const ChevronLeftIcon: React.FC<IconProps> = ({ className, size = 16 }) => (
   <svg
@@ -96,7 +96,7 @@ export const ChevronLeftIcon: React.FC<IconProps> = ({ className, size = 16 }) =
 );
 
 /**
- * Mastercard mccom-icons icon-Arrow-Diagonal (\f103) for [target="_blank"] links
+ * Decaspark UI external link diagonal arrow icon (viewBox 0 0 24 24)
  */
 export const DiagonalArrowIcon: React.FC<IconProps> = ({ className, size = 14 }) => (
   <svg
@@ -117,7 +117,7 @@ export const DiagonalArrowIcon: React.FC<IconProps> = ({ className, size = 14 })
 );
 
 /**
- * Mastercard mccom-icons icon-Curved-Right-Arrow (\f113) for Algolia mid-query items
+ * Decaspark UI curved return-arrow icon for live search suggestions (viewBox 0 0 24 24)
  */
 export const CurvedRightArrowIcon: React.FC<IconProps> = ({ className, size = 12 }) => (
   <svg

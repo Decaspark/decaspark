@@ -3,6 +3,7 @@ export interface NavLeafItem {
   href: string;
   external?: boolean;
   isOverview?: boolean;
+  tags?: string;
 }
 
 export interface NavSubcategory {
@@ -48,555 +49,621 @@ export const BRAND_LOGO = {
 
 export const NAVIGATION_CATEGORIES: NavCategory[] = [
   {
-    id: 'for-you',
-    label: 'For you',
+    id: 'products',
+    label: 'Products',
     subcategories: [
       {
-        id: 'find-a-card',
-        label: 'Find a card',
+        id: 'digital-systems',
+        label: 'Digital Systems & Templates',
         items: [
           {
-            label: 'Explore all cards',
-            href: 'https://www.mastercard.com/us/en/personal/find-a-card.html',
+            label: 'Explore all digital products',
+            href: '/products/digital',
             isOverview: true,
+            tags: 'digital downloads store templates workspace notion',
           },
           {
-            label: 'Mastercard Credit Cards',
-            href: 'https://www.mastercard.com/us/en/personal/find-a-card/credit-card.html',
+            label: 'Notion & Operating Systems',
+            href: '/products/digital/operating-systems',
+            tags: 'notion workspace second brain company os productivity',
           },
           {
-            label: 'Mastercard Debit Cards',
-            href: 'https://www.mastercard.com/us/en/personal/find-a-card/debit-card.html',
+            label: 'Project & Sprint Frameworks',
+            href: '/products/digital/sprint-frameworks',
+            tags: 'agile roadmap planning tracker delivery templates',
           },
           {
-            label: 'Mastercard Prepaid Cards',
-            href: 'https://www.mastercard.com/us/en/personal/find-a-card/prepaid-card.html',
+            label: 'Financial & Ops Calculators',
+            href: '/products/digital/ops-calculators',
+            tags: 'spreadsheets finance runway pricing models',
           },
           {
-            label: 'Cards for your passions',
-            href: 'https://www.mastercard.com/us/en/personal/find-a-card/passion-cards.html',
+            label: 'Client Portal Blueprints',
+            href: '/products/digital/client-portals',
+            tags: 'agency onboarding delivery dashboard crm',
           },
           {
-            label: 'Card benefits',
-            href: 'https://www.mastercard.com/us/en/personal/find-a-card/card-benefits.html',
-          },
-          {
-            label: 'Mastercard Gift Cards',
-            href: 'https://www.mastercard.com/us/en/personal/find-a-card/prepaid-card/prepaid-gift-mastercard.html',
-          },
-        ],
-      },
-      {
-        id: 'planning-a-trip',
-        label: 'Planning a trip',
-        items: [
-          {
-            label: 'Access experiences, offers and benefits',
-            href: 'https://www.mastercard.com/us/en/personal/travel.html',
+            label: 'Knowledge Base Kits',
+            href: '/products/digital/knowledge-bases',
+            tags: 'wiki handbook sop documentation templates',
           },
         ],
       },
       {
-        id: 'ways-to-pay',
-        label: 'Ways to pay',
+        id: 'design-creator-assets',
+        label: 'Design & Creator Assets',
         items: [
           {
-            label: 'Pay your way',
-            href: 'https://www.mastercard.com/us/en/personal/ways-to-pay.html',
+            label: 'Explore design & creator kits',
+            href: '/products/design-assets',
             isOverview: true,
+            tags: 'figma design ui kits creative assets',
           },
           {
-            label: 'Contactless',
-            href: 'https://www.mastercard.com/us/en/personal/ways-to-pay/contactless.html',
+            label: 'UI Component Libraries',
+            href: '/products/design-assets/ui-libraries',
+            tags: 'figma react tokens design system components',
           },
           {
-            label: 'Click to Pay',
-            href: 'https://www.mastercard.com/us/en/personal/ways-to-pay/click-to-pay.html',
+            label: 'Brand Identity & Deck Systems',
+            href: '/products/design-assets/brand-decks',
+            tags: 'pitch decks slides keynote presentation guidelines',
           },
           {
-            label: 'Payment passkeys',
-            href: 'https://www.mastercard.com/us/en/personal/ways-to-pay/payment-passkeys.html',
-          },
-        ],
-      },
-      {
-        id: 'protecting-you',
-        label: 'Protecting you',
-        items: [
-          {
-            label: 'Safety and security benefits',
-            href: 'https://www.mastercard.com/us/en/personal/protection-and-security.html',
+            label: 'Editorial & Social Layout Packs',
+            href: '/products/design-assets/editorial-packs',
+            tags: 'content creation social media carousels thumbnails',
           },
           {
-            label: 'Mastercard ID Theft Protection',
-            href: 'https://mastercardus.idprotectiononline.com/enroll/home',
-            external: true,
+            label: 'Iconography & Motion Presets',
+            href: '/products/design-assets/motion-presets',
+            tags: 'icons svg video luts motion templates',
           },
         ],
       },
       {
-        id: 'get-support',
-        label: 'Get support',
+        id: 'software-ai-packs',
+        label: 'Software, Scripts & AI Packs',
         items: [
           {
-            label: 'Support and contacts',
-            href: 'https://www.mastercard.com/us/en/personal/get-support.html',
+            label: 'Explore software & toolkits',
+            href: '/products/software',
             isOverview: true,
+            tags: 'code scripts saas micro tools developer',
           },
           {
-            label: 'Find the nearest ATM',
-            href: 'https://www.mastercard.com/us/en/personal/get-support/atm-near-me.html',
+            label: 'Workflow & API Connectors',
+            href: '/products/software/api-connectors',
+            tags: 'webhooks integrations n8n make zapier scripts',
           },
           {
-            label: 'Use our currency converter',
-            href: 'https://www.mastercard.com/us/en/personal/get-support/currency-exchange-rate-converter.html',
-          },
-        ],
-      },
-      {
-        id: 'experience-mastercard',
-        label: 'Experience Mastercard',
-        items: [
-          {
-            label: 'Enjoy Priceless experiences',
-            href: 'https://www.mastercard.com/us/en/personal/experience-mastercard/priceless.html',
+            label: 'Prompt & Agent Libraries',
+            href: '/products/software/agent-libraries',
+            tags: 'ai prompts llm agents workflows',
           },
           {
-            label: 'Explore passions',
-            href: 'https://www.mastercard.com/us/en/personal/experience-mastercard/noah-kahan.html',
+            label: 'CLI & Developer Utilities',
+            href: '/products/software/developer-utilities',
+            tags: 'command line boilerplate starter kits engineering',
           },
           {
-            label: 'Our multisensory brand',
-            href: 'https://www.mastercard.com/us/en/personal/experience-mastercard/multisensory-branding.html',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'for-business',
-    label: 'For business',
-    subcategories: [
-      {
-        id: 'explore-solutions',
-        label: 'Explore solutions',
-        items: [
-          {
-            label: 'Consumer payments',
-            href: 'https://www.mastercard.com/us/en/business/payments/consumer-payments.html',
-          },
-          {
-            label: 'Commercial payments',
-            href: 'https://www.mastercard.com/us/en/business/payments/commercial-payments.html',
-          },
-          {
-            label: 'Money movement',
-            href: 'https://www.mastercard.com/us/en/business/payments/mastercard-move.html',
-          },
-          {
-            label: 'Open finance',
-            href: 'https://www.mastercard.com/us/en/business/open-finance.html',
-          },
-          {
-            label: 'Advisors & transformation',
-            href: 'https://www.mastercard.com/us/en/business/insights-intelligence/advisors-transformation.html',
-          },
-          {
-            label: 'Cybersecurity & fraud prevention',
-            href: 'https://www.mastercard.com/us/en/business/cybersecurity-fraud-prevention.html',
-          },
-          {
-            label: 'Consumer acquisition & engagement',
-            href: 'https://www.mastercard.com/us/en/business/consumer-acquisition-and-engagement.html',
-          },
-          {
-            label: 'Insights & intelligence',
-            href: 'https://www.mastercard.com/us/en/business/insights-intelligence.html',
-          },
-          {
-            label: 'AI',
-            href: 'https://www.mastercard.com/us/en/business/artificial-intelligence.html',
-          },
-          {
-            label: 'Digital Asset Solutions',
-            href: 'https://www.mastercard.com/us/en/business/payments/consumer-payments/next-gen-payments/digital-asset-solutions.html',
+            label: 'Browser & Workspace Extensions',
+            href: '/products/software/workspace-extensions',
+            tags: 'plugins productivity extensions apps',
           },
         ],
       },
       {
-        id: 'explore-by-industry-segment',
-        label: 'Explore by industry segment',
+        id: 'books-print-editions',
+        label: 'Books & Print Editions',
         items: [
           {
-            label: 'Financial institutions',
-            href: 'https://www.mastercard.com/us/en/business/industry-segment/financial-institutions.html',
+            label: 'Browse all books & print',
+            href: '/products/books',
+            isOverview: true,
+            tags: 'self made books physical print publishing hardcover paperback',
           },
           {
-            label: 'Small and medium enterprises',
-            href: 'https://www.mastercard.com/us/en/business/industry-segment/small-medium-business.html',
+            label: 'Authored Technical & Strategy Books',
+            href: '/products/books/strategy-books',
+            tags: 'self-made books authored monographs engineering leadership',
           },
           {
-            label: 'Large corporations',
-            href: 'https://www.mastercard.com/us/en/business/industry-segment/large-corporations.html',
+            label: 'Team Operations Field Guides',
+            href: '/products/books/field-guides',
+            tags: 'physical books pocket guides handbooks operators',
           },
           {
-            label: 'Public sector',
-            href: 'https://www.mastercard.com/us/en/business/industry-segment/public-sector.html',
+            label: 'Structured Workbooks & Manuals',
+            href: '/products/books/workbooks',
+            tags: 'print workbooks exercises tactical manuals',
           },
           {
-            label: 'Fintech',
-            href: 'https://www.mastercard.com/us/en/business/industry-segment/fintech.html',
+            label: 'Collector Hardcover Editions',
+            href: '/products/books/hardcover-editions',
+            tags: 'limited print clothbound books decaspark press',
           },
           {
-            label: 'Acquirers and PSPs',
-            href: 'https://www.mastercard.com/us/en/business/industry-segment/acquirers-psps.html',
-          },
-          {
-            label: 'Healthcare',
-            href: 'https://www.mastercard.com/us/en/business/industry-segment/healthcare.html',
+            label: 'Digital + Print Bundles',
+            href: '/products/books/bundles',
+            tags: 'ebook pdf epub hardcover bundle',
           },
         ],
       },
       {
-        id: 'partner-programs',
-        label: 'Partner programs',
+        id: 'physical-studio-goods',
+        label: 'Physical Studio Goods',
         items: [
           {
-            label: 'Partner Advantage Program',
-            href: 'https://www.mastercard.com/us/en/business/services/mastercard-partner-advantage-program.html',
+            label: 'Explore physical goods',
+            href: '/products/physical-goods',
+            isOverview: true,
+            tags: 'physical products stationery hardware desk gear merch',
           },
           {
-            label: 'Network Enablement Partners (NEP)',
-            href: 'https://www.mastercard.com/us/en/business/support/network-enablement-partners.html',
+            label: 'Dot-Grid Journals & Planners',
+            href: '/products/physical-goods/journals-planners',
+            tags: 'notebooks paper quarterly planner analog',
           },
           {
-            label: 'Mastercard Move',
-            href: 'https://www.mastercard.com/us/en/business/payments/mastercard-move/partner-program.html',
-          },
-        ],
-      },
-      {
-        id: 'business-support',
-        label: 'Support',
-        items: [
-          {
-            label: 'Find a payment facilitator',
-            href: 'https://www.mastercard.com/us/en/business/support/payment-facilitators.html',
+            label: 'Architecture & Strategy Card Decks',
+            href: '/products/physical-goods/strategy-decks',
+            tags: 'physical workshop cards facilitation decks',
           },
           {
-            label: 'Network Enablement Partners',
-            href: 'https://www.mastercard.com/us/en/business/support/network-enablement-partners.html',
+            label: 'Desk Mats & Reference Prints',
+            href: '/products/physical-goods/desk-goods',
+            tags: 'studio desk accessories posters prints',
           },
           {
-            label: 'Mastercard rules and compliance programs',
-            href: 'https://www.mastercard.com/us/en/business/support/rules.html',
-          },
-          {
-            label: 'BIN account range table',
-            href: 'https://www.mastercard.com/us/en/business/support/simplified-bin-account-range-table.html',
+            label: 'Team Onboarding Kits',
+            href: '/products/physical-goods/onboarding-kits',
+            tags: 'physical welcome boxes books stationery',
           },
         ],
       },
     ],
   },
   {
-    id: 'for-the-world',
-    label: 'For the world',
+    id: 'services',
+    label: 'Services',
     subcategories: [
       {
-        id: 'making-an-impact',
-        label: 'Making an impact',
+        id: 'content-creation',
+        label: 'Content Creation & Editorial',
         items: [
           {
-            label: 'Corporate impact',
-            href: 'https://www.mastercard.com/us/en/for-the-world/corporate-impact.html',
+            label: 'Content studio overview',
+            href: '/services/content-creation',
+            isOverview: true,
+            tags: 'content creation agency writing editorial marketing',
           },
           {
-            label: 'Empowering people',
-            href: 'https://www.mastercard.com/us/en/for-the-world/people.html',
+            label: 'Technical & Long-Form Writing',
+            href: '/services/content-creation/technical-writing',
+            tags: 'articles whitepapers deep dives engineering blogs',
           },
           {
-            label: 'Pathways to prosperity',
-            href: 'https://www.mastercard.com/us/en/for-the-world/prosperity.html',
+            label: 'Executive Thought Leadership',
+            href: '/services/content-creation/thought-leadership',
+            tags: 'ghostwriting essays founder communication',
           },
           {
-            label: 'Preserving the planet',
-            href: 'https://www.mastercard.com/us/en/for-the-world/planet.html',
+            label: 'Product Launch Narratives',
+            href: '/services/content-creation/launch-narratives',
+            tags: 'messaging positioning announcements campaigns',
+          },
+          {
+            label: 'Documentation & Playbook Authorship',
+            href: '/services/content-creation/documentation',
+            tags: 'developer docs internal playbooks manuals',
           },
         ],
       },
       {
-        id: 'empowering-people',
-        label: 'Empowering people',
+        id: 'creative-production',
+        label: 'Video, Brand & Creative Production',
         items: [
           {
-            label: 'Community and belonging',
-            href: 'https://www.mastercard.com/us/en/for-the-world/people/community-belonging.html',
+            label: 'Creative production overview',
+            href: '/services/creative-production',
+            isOverview: true,
+            tags: 'video production motion design brand studio',
           },
           {
-            label: 'Careers at Mastercard',
-            href: 'https://careers.mastercard.com/us/en/',
-            external: true,
+            label: 'Product Walkthroughs & Demos',
+            href: '/services/creative-production/product-demos',
+            tags: 'launch videos explainers screencasts motion',
           },
           {
-            label: 'Community impact',
-            href: 'https://www.mastercard.com/us/en/for-the-world/people/community-impact.html',
+            label: 'Multi-Channel Video Systems',
+            href: '/services/creative-production/video-systems',
+            tags: 'youtube short-form social video series editing',
           },
           {
-            label: 'Kids4Tech',
-            href: 'https://www.mastercard.com/us/en/for-the-world/people/kids4tech.html',
+            label: 'Visual Identity & Design Systems',
+            href: '/services/creative-production/design-systems',
+            tags: 'branding typography web design guidelines',
+          },
+          {
+            label: 'Keynote & Pitch Deck Design',
+            href: '/services/creative-production/pitch-decks',
+            tags: 'investor decks conference presentations slides',
           },
         ],
       },
       {
-        id: 'pathways-to-prosperity',
-        label: 'Pathways to prosperity',
+        id: 'workflow-automation',
+        label: 'Workflow & Operations Automation',
         items: [
           {
-            label: 'Mastercard Center for Inclusive Growth',
-            href: 'https://www.mastercardcenter.org/',
-            external: true,
+            label: 'Automation engineering overview',
+            href: '/services/automation',
+            isOverview: true,
+            tags: 'automation workflows operations efficiency integration',
           },
           {
-            label: 'Financial Inclusion products and solutions',
-            href: 'https://www.mastercard.com/us/en/for-the-world/prosperity/financial-inclusion-products-and-solutions.html',
+            label: 'End-to-End Process Automation',
+            href: '/services/automation/process-automation',
+            tags: 'eliminate manual tasks ops orchestration',
           },
           {
-            label: 'Mastercard Community Pass',
-            href: 'https://www.mastercard.com/us/en/for-the-world/prosperity/community-pass.html',
+            label: 'CRM, Billing & Revenue Pipelines',
+            href: '/services/automation/revenue-pipelines',
+            tags: 'revops sales onboarding invoicing automation',
+          },
+          {
+            label: 'Cross-Tool Sync & Webhooks',
+            href: '/services/automation/integrations',
+            tags: 'api sync slack linear notion hubspot supabase',
+          },
+          {
+            label: 'Reporting & Executive Dashboards',
+            href: '/services/automation/dashboards',
+            tags: 'automated kpi metrics analytics alerts',
           },
         ],
       },
       {
-        id: 'preserving-the-planet',
-        label: 'Preserving the planet',
+        id: 'ai-agents-tooling',
+        label: 'AI Agents & Custom Tooling',
         items: [
           {
-            label: 'Reducing our GHG emissions',
-            href: 'https://www.mastercard.com/us/en/for-the-world/planet/net-zero-emissions.html',
+            label: 'AI systems overview',
+            href: '/services/ai-systems',
+            isOverview: true,
+            tags: 'artificial intelligence agents custom llm automation',
           },
           {
-            label: 'Environmentally conscious choices',
-            href: 'https://www.mastercard.com/us/en/for-the-world/planet/conscious-choices.html',
+            label: 'Custom Internal AI Assistants',
+            href: '/services/ai-systems/internal-assistants',
+            tags: 'team copilots support triageslack bots',
           },
           {
-            label: 'Priceless Planet Coalition',
-            href: 'https://www.mastercard.com/us/en/for-the-world/planet/priceless-planet.html',
+            label: 'Automated Content & Research Pipelines',
+            href: '/services/ai-systems/content-pipelines',
+            tags: 'editorial workflows synthesis enrichment',
           },
           {
-            label: 'Carbon Calculator',
-            href: 'https://www.mastercard.com/us/en/for-the-world/planet/priceless-planet/carbon-calculator.html',
+            label: 'Knowledge Retrieval (RAG) Systems',
+            href: '/services/ai-systems/knowledge-retrieval',
+            tags: 'company search semantic docs indexing',
           },
           {
-            label: 'Digital First card program',
-            href: 'https://www.mastercard.com/us/en/business/payments/consumer-payments/next-gen-payments/digital-first.html',
-          },
-        ],
-      },
-      {
-        id: 'about-mastercard',
-        label: 'About Mastercard',
-        items: [
-          {
-            label: 'About us',
-            href: 'https://www.mastercard.com/us/en/for-the-world/about-us.html',
-          },
-          {
-            label: 'Privacy and data responsibility',
-            href: 'https://www.mastercard.com/us/en/for-the-world/about-us/mastercard-privacy-and-data-responsibility.html',
-          },
-          {
-            label: 'Reports, policies and statements',
-            href: 'https://www.mastercard.com/us/en/for-the-world/about-us/reports-policies-and-statements.html',
+            label: 'Bespoke Internal Apps & Portals',
+            href: '/services/ai-systems/internal-apps',
+            tags: 'custom software admin panels operational tools',
           },
         ],
       },
     ],
   },
   {
-    id: 'for-innovators',
-    label: 'For innovators',
+    id: 'for-teams',
+    label: 'For Teams',
     subcategories: [
       {
-        id: 'build-with-us',
-        label: 'Build with us',
+        id: 'team-enablement',
+        label: 'Team Enablement & Advisory',
         items: [
           {
-            label: 'Developers',
-            href: 'https://www.mastercard.com/us/en/innovation/build-with-us/mastercard-developers.html',
+            label: 'How we help teams',
+            href: '/teams/enablement',
+            isOverview: true,
+            tags: 'helping teams consulting advisory coaching productivity',
           },
           {
-            label: 'Digital labs',
-            href: 'https://www.mastercard.com/us/en/innovation/build-with-us/digital-labs.html',
+            label: 'Operating Cadence & Workflow Audits',
+            href: '/teams/enablement/workflow-audits',
+            tags: 'diagnostics bottlenecks execution velocity',
+          },
+          {
+            label: 'Async Collaboration Architecture',
+            href: '/teams/enablement/async-collaboration',
+            tags: 'remote distributed teams communication rituals',
+          },
+          {
+            label: 'SOP & Documentation Sprints',
+            href: '/teams/enablement/sop-sprints',
+            tags: 'knowledge transfer institutional memory playbooks',
+          },
+          {
+            label: 'Toolstack Consolidation',
+            href: '/teams/enablement/toolstack-consolidation',
+            tags: 'software audit cost reduction migration',
           },
         ],
       },
       {
-        id: 'partner-with-us',
-        label: 'Partner with us',
+        id: 'workshops-training',
+        label: 'Workshops & Training',
         items: [
           {
-            label: 'Start Path',
-            href: 'https://www.mastercard.com/us/en/innovation/partner-with-us/start-path.html',
+            label: 'Explore workshops & cohorts',
+            href: '/teams/training',
+            isOverview: true,
+            tags: 'team training live workshops upskilling',
           },
           {
-            label: 'Mastercard Engage',
-            href: 'https://www.mastercard.com/us/en/business/industry-segment/fintech/program/engage.html',
+            label: 'AI & Automation Bootcamp for Teams',
+            href: '/teams/training/automation-bootcamp',
+            tags: 'hands-on ai adoption workflow building',
           },
           {
-            label: 'Product Express',
-            href: 'https://www.mastercard.com/us/en/business/industry-segment/fintech/program/product-express.html',
+            label: 'Content Engine Workshop',
+            href: '/teams/training/content-engine',
+            tags: 'editorial systems team publishing training',
+          },
+          {
+            label: 'Systems Thinking for Operators',
+            href: '/teams/training/systems-thinking',
+            tags: 'operations architecture leadership cohort',
+          },
+          {
+            label: 'Custom Onsite & Virtual Briefings',
+            href: '/teams/training/executive-briefings',
+            tags: 'leadership offsites seminars strategy sessions',
           },
         ],
       },
       {
-        id: 'explore-with-us',
-        label: 'Explore with us',
+        id: 'solutions-by-function',
+        label: 'Solutions by Function',
         items: [
           {
-            label: 'Research and insights',
-            href: 'https://www.mastercard.com/us/en/innovation/explore-with-us/mastercard-signals-research-insights.html',
+            label: 'Product & Engineering Teams',
+            href: '/teams/functions/product-engineering',
+            tags: 'specs release workflows developer velocity',
           },
           {
-            label: 'Research and development',
-            href: 'https://www.mastercard.com/us/en/innovation/explore-with-us/research-development.html',
+            label: 'Operations & Chief of Staff',
+            href: '/teams/functions/operations',
+            tags: 'company rhythm okrs automation ops',
+          },
+          {
+            label: 'Marketing, Media & Content Teams',
+            href: '/teams/functions/marketing-content',
+            tags: 'editorial calendars production pipelines assets',
+          },
+          {
+            label: 'Founders & Lean Leadership',
+            href: '/teams/functions/founders',
+            tags: 'scaling startups leverage operating systems',
+          },
+          {
+            label: 'Agencies & Consultancies',
+            href: '/teams/functions/agencies',
+            tags: 'client delivery repeatable engagements margin',
           },
         ],
       },
       {
-        id: 'engage-with-us',
-        label: 'Engage with us',
+        id: 'enterprise-licensing',
+        label: 'Enterprise & Volume Licensing',
         items: [
           {
-            label: 'Experience Centers',
-            href: 'https://www.mastercard.com/us/en/innovation/engage-with-us/mastercard-experience-center.html',
+            label: 'Team & Organization Licenses',
+            href: '/teams/licensing',
+            isOverview: true,
+            tags: 'seat licenses unlimited digital access',
+          },
+          {
+            label: 'Bulk Physical Book & Kit Orders',
+            href: '/teams/licensing/bulk-editions',
+            tags: 'wholesale books offsites corporate gifting',
+          },
+          {
+            label: 'Dedicated Retainer Partnerships',
+            href: '/teams/licensing/retainers',
+            tags: 'ongoing automation content advisory support',
           },
         ],
       },
     ],
   },
   {
-    id: 'news-and-trends',
-    label: 'News and trends',
+    id: 'resources',
+    label: 'Resources',
     subcategories: [
       {
-        id: 'newsroom',
-        label: 'Newsroom',
+        id: 'guides-frameworks',
+        label: 'Guides & Frameworks',
         items: [
           {
-            label: 'Global newsroom',
-            href: 'https://www.mastercard.com/us/en/news-and-trends/stories.html',
+            label: 'Resource library',
+            href: '/resources',
+            isOverview: true,
+            tags: 'free guides frameworks articles insights',
           },
           {
-            label: 'Asia Pacific newsroom',
-            href: 'https://www.mastercard.com/news/ap/en',
-            external: true,
+            label: 'Automation Architecture Blueprints',
+            href: '/resources/automation-blueprints',
+            tags: 'reference diagrams workflows technical guides',
           },
           {
-            label: 'European newsroom',
-            href: 'https://www.mastercard.com/news/europe/en',
-            external: true,
+            label: 'Content Operations Handbook',
+            href: '/resources/content-operations',
+            tags: 'editorial process publishing framework',
           },
           {
-            label: 'Eastern Europe, Middle East Africa newsroom',
-            href: 'https://www.mastercard.com/news/eemea/en/',
-            external: true,
-          },
-          {
-            label: 'Latin America newsroom',
-            href: 'https://www.mastercard.com/news/latin-america/es',
-            external: true,
+            label: 'Team Productivity Benchmarks',
+            href: '/resources/productivity-benchmarks',
+            tags: 'research report metrics operations',
           },
         ],
       },
       {
-        id: 'featured-topics',
-        label: 'Featured topics',
+        id: 'journal-publications',
+        label: 'Journal & Publications',
         items: [
           {
-            label: 'AI',
-            href: 'https://www.mastercard.com/us/en/news-and-trends/featured-topic/artificial-intelligence-featured-topic.html',
+            label: 'Decaspark Journal',
+            href: '/resources/journal',
+            tags: 'essays blog articles updates',
           },
           {
-            label: 'Cybersecurity',
-            href: 'https://www.mastercard.com/us/en/news-and-trends/featured-topic/cybersecurity-featured-topic.html',
+            label: 'Book Excerpts & Sample Chapters',
+            href: '/resources/sample-chapters',
+            tags: 'free chapters reading preview decaspark press',
           },
           {
-            label: 'Open finance',
-            href: 'https://www.mastercard.com/us/en/news-and-trends/featured-topic/open-finance.html',
+            label: 'Release Notes & Product Updates',
+            href: '/resources/changelog',
+            tags: 'new releases changelog templates tools',
           },
           {
-            label: 'Small business',
-            href: 'https://www.mastercard.com/us/en/news-and-trends/featured-topic/small-business-featured-topic.html',
-          },
-          {
-            label: 'Digital assets',
-            href: 'https://www.mastercard.com/us/en/news-and-trends/featured-topic/digital-assets-featured-topic.html',
-          },
-          {
-            label: 'Account to account',
-            href: 'https://www.mastercard.com/us/en/news-and-trends/featured-topic/account-to-account-payments.html',
-          },
-          {
-            label: 'Consumer acquisition & engagement',
-            href: 'https://www.mastercard.com/us/en/news-and-trends/featured-topic/consumer-acquisition-and-engagement-featured-topic.html',
-          },
-          {
-            label: 'Insights & Intelligence',
-            href: 'https://www.mastercard.com/us/en/news-and-trends/featured-topic/insight-and-intelligence.html',
-          },
-          {
-            label: 'Personalization',
-            href: 'https://www.mastercard.com/us/en/news-and-trends/featured-topic/personalization.html',
+            label: 'Newsletter & Briefings',
+            href: '/resources/newsletter',
+            tags: 'weekly dispatch insights operators',
           },
         ],
       },
       {
-        id: 'insights-and-reports',
-        label: 'Insights & reports',
+        id: 'case-studies',
+        label: 'Case Studies',
         items: [
           {
-            label: 'Mastercard Economics Institute',
-            href: 'https://www.mastercard.com/us/en/news-and-trends/insights-report/mastercard-economic-institute.html',
+            label: 'Client & Team Outcomes',
+            href: '/resources/case-studies',
+            isOverview: true,
+            tags: 'results customer stories impact roi',
           },
           {
-            label: 'SpendingPulse™',
-            href: 'https://www.mastercardservices.com/en/capabilities/spendingpulse',
-            external: true,
+            label: 'Scaling Operations with Automation',
+            href: '/resources/case-studies/operations-automation',
+            tags: 'hours saved workflow transformation',
           },
           {
-            label: 'Mastercard Business Intelligence',
-            href: 'https://mbi.mastercardservices.com/?utm_source=mastercardwebsite&utm_medium=loginbanner&utm_campaign=insights_reports&utm_id=mbi&utm_term=global',
-            external: true,
+            label: 'Building B2B Content Engines',
+            href: '/resources/case-studies/content-engines',
+            tags: 'organic growth editorial production case study',
           },
         ],
       },
       {
-        id: 'press-resources',
-        label: 'Press resources',
+        id: 'customer-support',
+        label: 'Customer Support',
         items: [
           {
-            label: 'Press releases',
-            href: 'https://www.mastercard.com/us/en/news-and-trends/press.html',
+            label: 'Help Center & Documentation',
+            href: '/support',
+            tags: 'faq help docs customer service',
           },
           {
-            label: 'Executive bios',
-            href: 'https://www.mastercard.com/us/en/news-and-trends/press/executive-bios.html',
+            label: 'Orders, Shipping & Returns',
+            href: '/support/orders-shipping',
+            tags: 'physical books delivery tracking international shipping',
           },
           {
-            label: 'Media contacts',
-            href: 'https://www.mastercard.com/us/en/news-and-trends/press/media-contacts.html',
+            label: 'Digital License & Download Access',
+            href: '/support/digital-access',
+            tags: 'account downloads invoices license keys',
+          },
+          {
+            label: 'Open Source on GitHub',
+            href: 'https://github.com/Decaspark',
+            external: true,
+            tags: 'github repositories code open source decaspark',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'company',
+    label: 'Company',
+    subcategories: [
+      {
+        id: 'about-decaspark',
+        label: 'About Decaspark',
+        items: [
+          {
+            label: 'Our Mission & Operating Principles',
+            href: '/company/about',
+            isOverview: true,
+            tags: 'about decaspark story vision values',
+          },
+          {
+            label: 'Leadership & Studio Craft',
+            href: '/company/leadership',
+            tags: 'team founders philosophy standards',
+          },
+          {
+            label: 'Decaspark Press (Publishing Imprint)',
+            href: '/company/press-imprint',
+            tags: 'self made books publishing house print craft',
+          },
+          {
+            label: 'Sustainability & Print Quality',
+            href: '/company/print-craft',
+            tags: 'archival paper binding materials physical goods',
           },
         ],
       },
       {
-        id: 'investor-relations',
-        label: 'Investor relations',
+        id: 'work-with-us',
+        label: 'Work With Us',
         items: [
           {
-            label: 'Access our latest financial reporting',
-            href: 'https://investor.mastercard.com/financials-and-sec-filings/default.aspx',
-            external: true,
+            label: 'Book a Discovery Call',
+            href: '/company/contact',
+            tags: 'contact consultation inquiry sales',
+          },
+          {
+            label: 'Request a Custom Proposal',
+            href: '/company/proposals',
+            tags: 'enterprise automation content engagement quote',
+          },
+          {
+            label: 'Partner & Affiliate Program',
+            href: '/company/partners',
+            tags: 'creators referrals partnerships',
+          },
+          {
+            label: 'Careers at Decaspark',
+            href: '/company/careers',
+            tags: 'jobs hiring writers engineers designers',
+          },
+        ],
+      },
+      {
+        id: 'press-legal',
+        label: 'Press & Legal',
+        items: [
+          {
+            label: 'Brand Assets & Media Kit',
+            href: '/company/media-kit',
+            tags: 'logo press kit guidelines',
+          },
+          {
+            label: 'Terms of Service & Licensing',
+            href: '/company/terms',
+            tags: 'commercial license legal terms',
+          },
+          {
+            label: 'Privacy & Security',
+            href: '/company/privacy',
+            tags: 'data protection security compliance',
           },
         ],
       },
@@ -608,64 +675,59 @@ export const SEARCH_PROMPT_HEADING = 'What are you looking for?';
 
 export const POPULAR_SEARCH_LINKS: PopularSearchLink[] = [
   {
-    label: 'Find a card',
-    href: 'https://www.mastercard.com/us/en/personal/find-a-card.html',
+    label: 'Digital Products & Systems',
+    href: '/products/digital',
   },
   {
-    label: 'AI',
-    href: 'https://www.mastercard.com/us/en/business/artificial-intelligence.html',
+    label: 'Self-Made Books & Print Editions',
+    href: '/products/books',
   },
   {
-    label: 'Cybersecurity & Fraud Prevention',
-    href: 'https://www.mastercard.com/us/en/business/cybersecurity-fraud-prevention.html',
+    label: 'Workflow & AI Automation',
+    href: '/services/automation',
   },
   {
-    label: 'Insights & Intelligence',
-    href: 'https://www.mastercard.com/us/en/business/insights-intelligence.html',
+    label: 'Content Creation Studio',
+    href: '/services/content-creation',
   },
   {
-    label: 'Personalization',
-    href: 'https://www.mastercard.com/us/en/business/consumer-acquisition-and-engagement/personalization.html',
+    label: 'Team Enablement & Workshops',
+    href: '/teams/enablement',
   },
   {
-    label: 'Money Movement',
-    href: 'https://www.mastercard.com/us/en/business/payments/mastercard-move.html',
+    label: 'Software, Scripts & Agent Packs',
+    href: '/products/software',
   },
   {
-    label: 'Commercial Payments',
-    href: 'https://www.mastercard.com/us/en/business/payments/commercial-payments.html',
+    label: 'Journals, Decks & Desk Goods',
+    href: '/products/physical-goods',
   },
   {
-    label: 'Open Finance',
-    href: 'https://www.mastercard.com/us/en/business/open-finance.html',
-  },
-  {
-    label: 'Digital Assets',
-    href: 'https://www.mastercard.com/us/en/business/payments/consumer-payments/next-gen-payments/digital-asset-solutions.html',
+    label: 'Team & Volume Licensing',
+    href: '/teams/licensing',
   },
 ];
 
-export const FEATURED_CONTENT_HEADING = 'Featured Content';
+export const FEATURED_CONTENT_HEADING = 'Featured from Decaspark';
 
 export const FEATURED_CONTENT_ITEMS: FeaturedContentItem[] = [
   {
-    title: 'Announcing the Mastercard Partner Advantage Program',
+    title: 'The Systems Playbook — Hardcover & Digital Edition',
     description:
-      "Whether you're seeking the right partner or ready to become one, our network helps you connect, grow and scale faster.",
-    href: 'https://www.mastercard.com/us/en/business/services/mastercard-partner-advantage-program.html',
-    external: true,
+      'An authored manual from Decaspark Press on designing resilient team workflows, documentation, and automation that compound.',
+    href: '/products/books/strategy-books',
   },
   {
-    title: 'Consumers are switching. Revenue is shifting. Open finance can be your differentiator.',
-    description: 'Read The state of open finance 2026 report.',
-    href: 'https://www.mastercard.com/us/en/news-and-trends/Insights/2026/the-state-of-open-finance-2026.html',
-    external: true,
+    title: 'End-to-End Workflow & AI Automation for Modern Teams',
+    description:
+      'Eliminate repetitive handoffs across CRM, knowledge bases, and internal tools with custom pipelines engineered by Decaspark.',
+    href: '/services/automation',
   },
   {
-    title: 'Turn everyday transactions into lasting loyalty',
+    title: 'Equip Your Organization with Ready-to-Deploy Systems & Content',
     description:
-      'Traditional account management is no longer enough. Learn what consumers are looking for in their post-purchase experience in our new research with Datos Insights.',
-    href: 'https://www.mastercard.com/us/en/news-and-trends/Insights/2026/turn-everyday-transactions-into-lasting-loyalty.html',
+      'Combine Decaspark digital templates, physical field guides, and dedicated studio production to help your team ship faster.',
+    href: '/teams/enablement',
   },
 ];
 
@@ -684,7 +746,7 @@ function buildSearchIndex(): SearchEntry[] {
           href: item.href,
           section: `${cat.label} · ${sub.label}`,
           external: item.external,
-          keywords: `${item.label} ${sub.label} ${cat.label}`.toLowerCase(),
+          keywords: `${item.label} ${sub.label} ${cat.label} ${item.tags ?? ''}`.toLowerCase(),
         });
       }
     }
@@ -697,7 +759,7 @@ function buildSearchIndex(): SearchEntry[] {
       id: `featured-${entries.length}`,
       title: feat.title,
       href: feat.href,
-      section: 'Featured Content',
+      section: FEATURED_CONTENT_HEADING,
       external: feat.external,
       keywords: `${feat.title} ${feat.description}`.toLowerCase(),
     });
