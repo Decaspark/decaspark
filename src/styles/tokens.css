@@ -2,6 +2,7 @@
 :root {
   --ds-canvas: #f3f0ee;
   --ds-surface: #ffffff;
+  --ds-surface-navbar: #f3f3f3;
   --ds-surface-glass: rgba(255, 255, 255, 0.8);
   --ds-surface-muted: #fcfbfa;
   --ds-surface-open: #f3f3f3;
@@ -32,6 +33,7 @@
   --font-sans: 'DecasparkSans', 'SofiaSans', Arial, sans-serif;
   --color-ds-canvas: #f3f0ee;
   --color-ds-surface: #ffffff;
+  --color-ds-surface-navbar: #f3f3f3;
   --color-ds-surface-muted: #fcfbfa;
   --color-ds-surface-open: #f3f3f3;
   --color-ds-ink: #141413;

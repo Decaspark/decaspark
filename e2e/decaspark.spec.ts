@@ -17,6 +17,11 @@ test.describe('Decaspark Angular Application — E2E, Accessibility, Responsive 
     await expect(page).toHaveTitle(/Decaspark/);
     await expect(page.locator('.navigation-bar__primary-logo img')).toBeVisible();
 
+    const desktopNavBg = await page
+      .locator('.navigation-bar')
+      .evaluate((el) => getComputedStyle(el).backgroundColor);
+    expect(desktopNavBg).toBe('rgb(243, 243, 243)');
+
     const l1Buttons = page.locator('.l1-container .nav-item > button');
     await expect(l1Buttons).toHaveCount(5);
     await expect(l1Buttons.nth(0)).toHaveText('Products');
@@ -99,11 +104,13 @@ test.describe('Decaspark Angular Application — E2E, Accessibility, Responsive 
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/');
 
-    // Verify unrounded bar & zero horizontal overflow
-    const navBarRadius = await page
-      .locator('.navigation-bar')
-      .evaluate((el) => getComputedStyle(el).borderRadius);
-    expect(navBarRadius).toBe('0px');
+    // Verify unrounded bar, #F3F3F3 navbar surface, & zero horizontal overflow
+    const navBarStyles = await page.locator('.navigation-bar').evaluate((el) => {
+      const cs = getComputedStyle(el);
+      return { borderRadius: cs.borderRadius, backgroundColor: cs.backgroundColor };
+    });
+    expect(navBarStyles.borderRadius).toBe('0px');
+    expect(navBarStyles.backgroundColor).toBe('rgb(243, 243, 243)');
 
     const overflowPx = await page.evaluate(
       () => document.documentElement.scrollWidth - window.innerWidth,
