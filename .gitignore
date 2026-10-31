@@ -10,3 +10,8 @@ verify-output
 playwright-report
 test-results
 coverage
+backend/vendor
+backend/.env
+backend/storage/*.key
+backend/bootstrap/cache/*.php
+
