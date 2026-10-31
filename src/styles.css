@@ -1,0 +1,89 @@
+@import 'tailwindcss';
+@import './styles/tokens.css';
+@import './styles/fonts.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: var(--ds-font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body.decaspark {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-family: var(--ds-font-sans);
+  font-weight: 450;
+  color: var(--ds-ink);
+  line-height: 1.3;
+  background-color: var(--ds-canvas);
+  min-height: 100vh;
+}
+
+/* Focus-visible & search active-descendant ring */
+.decaspark *:focus-visible,
+.decaspark [data-active='true'] {
+  outline: 2px solid var(--ds-ink);
+  outline-offset: 3px;
+  border-radius: 20px;
+}
+
+/* Screen-reader utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip to main content link */
+.decaspark .cmp-page__skiptomaincontent-link {
+  position: fixed;
+  top: -70px;
+  left: 5px;
+  padding: 10px;
+  z-index: 10000;
+  border: 2px solid var(--ds-ink);
+  border-top: 0;
+  border-radius: 0 0 20px 20px;
+  background-color: var(--ds-surface-glass);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  color: var(--ds-ink);
+  font-family: var(--ds-font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: top 0.2s ease-in-out;
+}
+
+.decaspark .cmp-page__skiptomaincontent-link:focus {
+  top: 0;
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .decaspark .cmp-page__skiptomaincontent-link {
+    transition: none;
+  }
+}
+
+/* Minimum scrollable host canvas on Home to preserve fixed/scrolled navbar state */
+.ds-empty-page {
+  min-height: 200vh;
+  width: 100%;
+  outline: none;
+}
