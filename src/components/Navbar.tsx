@@ -1,10 +1,12 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   BRAND_LOGO,
+  FEATURED_CONTENT_HEADING,
   FEATURED_CONTENT_ITEMS,
   NAVIGATION_CATEGORIES,
   POPULAR_SEARCH_LINKS,
   SEARCH_INDEX,
+  SEARCH_PROMPT_HEADING,
 } from '../data/navigationData';
 import {
   ChevronLeftIcon,
@@ -23,6 +25,7 @@ export const Navbar: React.FC = () => {
   const [activeL2Id, setActiveL2Id] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchClosing, setSearchClosing] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeHitIndex, setActiveHitIndex] = useState<number>(-1);
   const [isMobileView, setIsMobileView] = useState<boolean>(() =>
@@ -40,6 +43,41 @@ export const Navbar: React.FC = () => {
   const l2ButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const l3LinkRefs = useRef<Record<string, (HTMLAnchorElement | null)[]>>({});
   const scrollYRef = useRef<number>(0);
+  const searchCloseTimerRef = useRef<number | null>(null);
+
+  const clearSearchCloseTimer = useCallback(() => {
+    if (searchCloseTimerRef.current !== null) {
+      window.clearTimeout(searchCloseTimerRef.current);
+      searchCloseTimerRef.current = null;
+    }
+  }, []);
+
+  const closeSearchAnimated = useCallback(() => {
+    clearSearchCloseTimer();
+    setSearchOpen(false);
+    setActiveHitIndex(-1);
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      setSearchClosing(false);
+      setSearchQuery('');
+      return;
+    }
+
+    setSearchClosing(true);
+    searchCloseTimerRef.current = window.setTimeout(() => {
+      setSearchClosing(false);
+      setSearchQuery('');
+      searchCloseTimerRef.current = null;
+    }, 420);
+  }, [clearSearchCloseTimer]);
+
+  useEffect(() => {
+    return () => clearSearchCloseTimer();
+  }, [clearSearchCloseTimer]);
 
   const overlayActive = Boolean(activeL1Id || mobileMenuOpen || searchOpen);
   const isMobileL1Only = isMobileView && mobileMenuOpen && !activeL1Id && !searchOpen;
@@ -48,15 +86,17 @@ export const Navbar: React.FC = () => {
   useEffect(() => {
     const mql = window.matchMedia(MOBILE_MEDIA_QUERY);
     const handleChange = (e: MediaQueryListEvent) => {
+      clearSearchCloseTimer();
       setIsMobileView(e.matches);
       setActiveL1Id(null);
       setActiveL2Id(null);
       setMobileMenuOpen(false);
+      setSearchClosing(false);
     };
     setIsMobileView(mql.matches);
     mql.addEventListener('change', handleChange);
     return () => mql.removeEventListener('change', handleChange);
-  }, []);
+  }, [clearSearchCloseTimer]);
 
   // Match production lockBodyScroll / unlockBodyScroll (body.modal-open)
   useEffect(() => {
@@ -106,9 +146,7 @@ export const Navbar: React.FC = () => {
 
       if (searchOpen) {
         event.preventDefault();
-        setSearchOpen(false);
-        setSearchQuery('');
-        setActiveHitIndex(-1);
+        closeSearchAnimated();
         searchToggleRef.current?.focus();
       } else if (activeL2Id) {
         event.preventDefault();
@@ -134,18 +172,32 @@ export const Navbar: React.FC = () => {
 
     document.addEventListener('keydown', handleGlobalKeyDown);
     return () => document.removeEventListener('keydown', handleGlobalKeyDown);
-  }, [overlayActive, searchOpen, activeL2Id, activeL1Id, mobileMenuOpen, isMobileView]);
+  }, [
+    overlayActive,
+    searchOpen,
+    activeL2Id,
+    activeL1Id,
+    mobileMenuOpen,
+    isMobileView,
+    closeSearchAnimated,
+  ]);
 
   const closeAll = useCallback(() => {
     setActiveL1Id(null);
     setActiveL2Id(null);
     setMobileMenuOpen(false);
-    setSearchOpen(false);
-    setSearchQuery('');
-    setActiveHitIndex(-1);
-  }, []);
+    if (searchOpen) {
+      closeSearchAnimated();
+    } else {
+      clearSearchCloseTimer();
+      setSearchClosing(false);
+      setSearchOpen(false);
+      setSearchQuery('');
+      setActiveHitIndex(-1);
+    }
+  }, [searchOpen, closeSearchAnimated, clearSearchCloseTimer]);
 
-  // Filter live Algolia search index on mid-query
+  // Filter live Decaspark search index on mid-query
   const trimmedQuery = searchQuery.trim();
   const filteredHits = useMemo(() => {
     if (!trimmedQuery) return [];
@@ -174,6 +226,8 @@ export const Navbar: React.FC = () => {
   };
 
   const handleMobileMenuToggle = () => {
+    clearSearchCloseTimer();
+    setSearchClosing(false);
     if (mobileMenuOpen || activeL1Id) {
       setMobileMenuOpen(false);
       setActiveL1Id(null);
@@ -187,6 +241,8 @@ export const Navbar: React.FC = () => {
   };
 
   const handleL1Click = (l1Id: string) => {
+    clearSearchCloseTimer();
+    setSearchClosing(false);
     setSearchOpen(false);
     setSearchQuery('');
     setActiveHitIndex(-1);
@@ -216,11 +272,11 @@ export const Navbar: React.FC = () => {
 
   const handleSearchToggleClick = () => {
     if (searchOpen) {
-      setSearchOpen(false);
-      setSearchQuery('');
-      setActiveHitIndex(-1);
+      closeSearchAnimated();
       searchToggleRef.current?.focus();
     } else {
+      clearSearchCloseTimer();
+      setSearchClosing(false);
       setActiveL1Id(null);
       setActiveL2Id(null);
       setMobileMenuOpen(false);
@@ -235,12 +291,12 @@ export const Navbar: React.FC = () => {
       return;
     }
     const targetUrl = trimmedQuery
-      ? `https://www.mastercard.com/us/en/search-results.html?q=${encodeURIComponent(trimmedQuery)}`
-      : 'https://www.mastercard.com/us/en/search-results.html';
+      ? `/search?q=${encodeURIComponent(trimmedQuery)}`
+      : '/search';
     window.location.href = targetUrl;
   };
 
-  // Keyboard navigation matching marts clientlib-site NavigationHeader & LevelMenuModule
+  // Keyboard navigation across primary bar, mega-menu rails, and search panel
   const handleLogoKeyDown = (event: React.KeyboardEvent<HTMLAnchorElement>) => {
     if (event.key === 'ArrowRight') {
       event.preventDefault();
@@ -480,9 +536,7 @@ export const Navbar: React.FC = () => {
     if (event.key === 'Escape' || event.key === 'Esc') {
       event.preventDefault();
       event.stopPropagation();
-      setSearchOpen(false);
-      setSearchQuery('');
-      setActiveHitIndex(-1);
+      closeSearchAnimated();
       searchToggleRef.current?.focus();
       return;
     }
@@ -545,6 +599,7 @@ export const Navbar: React.FC = () => {
     'navigation-header',
     overlayActive ? 'active' : '',
     searchOpen ? 'search' : '',
+    searchClosing ? 'search-closing' : '',
     isMobileL1Only ? 'mobile-l1-only' : '',
   ]
     .filter(Boolean)
@@ -620,7 +675,7 @@ export const Navbar: React.FC = () => {
                             onClick={() => handleL1Click(l1.id)}
                             onKeyDown={(e) => handleL1KeyDown(e, l1Index, l1.id)}
                           >
-                            {l1.label}
+                            <span className="l1-label">{l1.label}</span>
                             <span className="l1-mobile-chevron" aria-hidden="true">
                               <ChevronRightIcon size={20} />
                             </span>
@@ -758,7 +813,7 @@ export const Navbar: React.FC = () => {
                                                 <>
                                                   <DiagonalArrowIcon
                                                     size={14}
-                                                    className="mc-external-icon"
+                                                    className="ds-external-icon"
                                                   />
                                                   <span className="sr-only">
                                                     opens in a new tab
@@ -783,7 +838,7 @@ export const Navbar: React.FC = () => {
               </div>
             </nav>
 
-            {/* Right: Search Toggle & Algolia Search Content */}
+            {/* Right: Search Toggle & Decaspark Search Content */}
             <div className="navigation-bar__search">
               <div
                 id="search-content"
@@ -801,7 +856,7 @@ export const Navbar: React.FC = () => {
                     >
                       <form
                         className="aa-Form"
-                        action="https://www.mastercard.com/us/en/search-results.html"
+                        action="/search"
                         role="search"
                         noValidate
                         onSubmit={handleSearchSubmit}
@@ -859,21 +914,21 @@ export const Navbar: React.FC = () => {
                 </div>
 
                 <div className="search-content">
-                  {/* Pre-Query State: "What are you looking for?" + "Featured Content" */}
+                  {/* Pre-Query State: Quick Links + Featured from Decaspark */}
                   <div className="plugin_prequery pre-query" hidden={trimmedQuery.length > 0}>
                     <div className="pre-query__grid">
                       <div className="pre-query__left">
-                        <div className="title mccom-title__pre">
+                        <div className="title ds-title__pre">
                           <div className="cmp-title">
                             <h2 className="cmp-title__text">
                               <span className="cmp-pretitle-icon" aria-hidden="true" />
-                              What are you looking for?
+                              {SEARCH_PROMPT_HEADING}
                             </h2>
                           </div>
                         </div>
 
                         {POPULAR_SEARCH_LINKS.map((item) => (
-                          <div key={item.label} className="button mccom-cta__tertiary">
+                          <div key={item.label} className="button ds-cta__tertiary">
                             <a
                               className="cmp-button"
                               href={item.href}
@@ -886,17 +941,17 @@ export const Navbar: React.FC = () => {
                       </div>
 
                       <div className="pre-query__right">
-                        <div className="title mccom-title__pre">
+                        <div className="title ds-title__pre">
                           <div className="cmp-title">
                             <h2 className="cmp-title__text">
                               <span className="cmp-pretitle-icon" aria-hidden="true" />
-                              Featured Content
+                              {FEATURED_CONTENT_HEADING}
                             </h2>
                           </div>
                         </div>
 
                         {FEATURED_CONTENT_ITEMS.map((item) => (
-                          <div key={item.title} className="teaser mccom-side-bar">
+                          <div key={item.title} className="teaser ds-side-bar">
                             <div className="cmp-teaser">
                               <a
                                 className="cmp-teaser__link"
@@ -915,7 +970,7 @@ export const Navbar: React.FC = () => {
                                   <>
                                     <DiagonalArrowIcon
                                       size={14}
-                                      className="mc-external-icon"
+                                      className="ds-external-icon"
                                     />
                                     <span className="sr-only">opens in a new tab</span>
                                   </>
@@ -928,7 +983,7 @@ export const Navbar: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Mid-Query State: Algolia Results List + View Results */}
+                  {/* Mid-Query State: Live Search Suggestions + View Results */}
                   <div className="mid-query" hidden={trimmedQuery.length === 0}>
                     <div className="mid-query__container cmp-container">
                       {filteredHits.length > 0 ? (
@@ -952,10 +1007,12 @@ export const Navbar: React.FC = () => {
                                   <span className="aa-ItemIcon" aria-hidden="true">
                                     <CurvedRightArrowIcon size={12} />
                                   </span>
-                                  <div className="algolia-analytics">
+                                  <div className="ds-search-result">
                                     <a
                                       className="hit-card"
                                       href={hit.href}
+                                      target={hit.external ? '_blank' : undefined}
+                                      rel={hit.external ? 'noopener noreferrer' : undefined}
                                       tabIndex={searchOpen && trimmedQuery.length > 0 ? 0 : -1}
                                     >
                                       <span>{hit.title}</span>
