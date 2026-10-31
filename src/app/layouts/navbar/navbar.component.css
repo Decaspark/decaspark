@@ -54,11 +54,9 @@
   max-width: 1288px;
   width: 100%;
   border-radius: 99px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #f3f3f3;
   -webkit-box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.04);
   box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.04);
-  -webkit-backdrop-filter: blur(7px);
-  backdrop-filter: blur(7px);
   z-index: 300;
   padding: 24px 55px;
   max-height: 88px;
@@ -94,7 +92,7 @@
 
 @media (max-width: 939px) {
   .decaspark .navigation-bar {
-    background-color: #ffffff;
+    background-color: #f3f3f3;
     border-radius: 0;
     z-index: 300;
     width: 100%;
@@ -442,7 +440,7 @@
   padding: 20px 20px 8px;
   height: calc(100vh - 58px);
   max-height: calc(100vh - 58px);
-  background-color: #ffffff;
+  background-color: #f3f3f3;
   z-index: 1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -843,7 +841,7 @@
     top: 65px;
     width: 100vw;
     height: calc(100vh - 65px);
-    background: #ffffff;
+    background: #f3f3f3;
     z-index: 2;
     padding: 20px 20px 48px;
     box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.04);
@@ -904,7 +902,7 @@
 
   .decaspark .navigation-header .l2-container .l2-left-rail li button[aria-expanded='true'],
   .decaspark .navigation-header .l2-container .l2-left-rail li button:hover {
-    background-color: #ffffff;
+    background-color: #f3f3f3;
   }
 
   .decaspark .navigation-header .l2-container .l2-left-rail .l2-chevron {
@@ -920,7 +918,7 @@
     top: 0;
     width: 100vw;
     height: calc(100vh - 65px);
-    background: #ffffff;
+    background: #f3f3f3;
     z-index: 3;
     margin: 0;
     padding: 20px 20px 48px;
@@ -959,7 +957,7 @@
     .l2-container
     .l3-container
     .cmp-link-teaser:has(a:hover) {
-    background-color: #ffffff;
+    background-color: #f3f3f3;
   }
 
   .decaspark .navigation-header .navigation-bar .l2-container .l3-container .nav-sub-section li a {
@@ -1243,7 +1241,7 @@
 
 @media (max-width: 939px) {
   .decaspark .navigation-header.active .navigation-bar {
-    background-color: #ffffff;
+    background-color: #f3f3f3;
     border-radius: 0;
     width: 100%;
     height: 65px;
@@ -1543,7 +1541,7 @@
 
 @media (max-width: 939px) {
   .decaspark .teaser.ds-side-bar .cmp-teaser {
-    background: #f3f0ee;
+    background: #ffffff;
   }
 }
 
