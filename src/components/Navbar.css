@@ -63,7 +63,7 @@
 @media (max-width: 939px) {
   .mccom .navigation-bar {
     background-color: #ffffff;
-    border-radius: 0px 0px 20px 20px;
+    border-radius: 0;
     z-index: 300;
     width: 100%;
     padding: 16px 20px;
@@ -97,7 +97,8 @@
 @media (max-width: 939px) {
   .mccom .navigation-bar__main {
     order: 1;
-    flex: 0;
+    flex: 0 0 32px;
+    min-width: 32px;
   }
 
   .mccom .navigation-bar__logo-wrapper {
@@ -108,6 +109,7 @@
 
   .mccom .navigation-bar__search {
     order: 3;
+    flex: 0 0 32px;
   }
 }
 
@@ -1130,10 +1132,6 @@
     transition:
       max-height 0.5s ease-in-out,
       background-color 0.3s ease-in-out;
-  }
-
-  .mccom .navigation-header.active.mobile-l1-only .navigation-bar {
-    border-radius: 0px 0px 20px 0px;
   }
 
   .mccom .navigation-header.active .navigation-bar .l1-container {
