@@ -324,8 +324,16 @@
   display: block;
 }
 
-.decaspark .navigation-header .navigation-bar .mobile-menu-button .mobile-menu-button-indicator::before,
-.decaspark .navigation-header .navigation-bar .mobile-menu-button .mobile-menu-button-indicator::after {
+.decaspark
+  .navigation-header
+  .navigation-bar
+  .mobile-menu-button
+  .mobile-menu-button-indicator::before,
+.decaspark
+  .navigation-header
+  .navigation-bar
+  .mobile-menu-button
+  .mobile-menu-button-indicator::after {
   content: '';
   display: block;
   transform: rotate(0deg);
@@ -369,7 +377,11 @@
   top: 8px;
 }
 
-.decaspark .navigation-header .navigation-bar .mobile-menu-button .mobile-menu-button-indicator::after {
+.decaspark
+  .navigation-header
+  .navigation-bar
+  .mobile-menu-button
+  .mobile-menu-button-indicator::after {
   bottom: 8px;
 }
 
@@ -1179,8 +1191,16 @@
   outline: none;
 }
 
-.decaspark .navigation-header .navigation-bar__search .aa-Form .aa-Input::-webkit-search-cancel-button,
-.decaspark .navigation-header .navigation-bar__search .aa-Form .aa-Input::-webkit-search-decoration {
+.decaspark
+  .navigation-header
+  .navigation-bar__search
+  .aa-Form
+  .aa-Input::-webkit-search-cancel-button,
+.decaspark
+  .navigation-header
+  .navigation-bar__search
+  .aa-Form
+  .aa-Input::-webkit-search-decoration {
   -webkit-appearance: none;
   appearance: none;
 }
@@ -1351,7 +1371,10 @@
     margin-top: 0;
   }
 
-  .decaspark .navigation-header.active.search .instant-search-comp__searchbox-wrap .aa-Autocomplete {
+  .decaspark
+    .navigation-header.active.search
+    .instant-search-comp__searchbox-wrap
+    .aa-Autocomplete {
     max-width: 100%;
     width: 100%;
     justify-content: flex-end;
@@ -1612,7 +1635,13 @@
   }
 }
 
-.decaspark .navigation-header.active.search #search-content .mid-query .aa-List .aa-Item .aa-ItemIcon {
+.decaspark
+  .navigation-header.active.search
+  #search-content
+  .mid-query
+  .aa-List
+  .aa-Item
+  .aa-ItemIcon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1683,3 +1712,7 @@
   display: none !important;
 }
 
+app-navbar-mega-menu,
+app-navbar-search-panel {
+  display: contents;
+}

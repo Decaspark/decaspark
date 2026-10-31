@@ -1,45 +1,15 @@
-export interface NavLeafItem {
-  label: string;
-  href: string;
-  external?: boolean;
-  isOverview?: boolean;
-  tags?: string;
-}
+import {
+  BrandLogo,
+  FeaturedContentItem,
+  NavCategory,
+  NavLeafItem,
+  NavSubcategory,
+  PopularSearchLink,
+  ResolvedCatalogRoute,
+  SearchEntry,
+} from '../models/navigation.models';
 
-export interface NavSubcategory {
-  id: string;
-  label: string;
-  items: NavLeafItem[];
-}
-
-export interface NavCategory {
-  id: string;
-  label: string;
-  subcategories: NavSubcategory[];
-}
-
-export interface PopularSearchLink {
-  label: string;
-  href: string;
-}
-
-export interface FeaturedContentItem {
-  title: string;
-  description: string;
-  href: string;
-  external?: boolean;
-}
-
-export interface SearchEntry {
-  id: string;
-  title: string;
-  href: string;
-  section: string;
-  external?: boolean;
-  keywords: string;
-}
-
-export const BRAND_LOGO = {
+export const BRAND_LOGO: BrandLogo = {
   src: '/images/decaspark-emblem.png',
   alt: 'Decaspark emblem',
   href: '/',
@@ -47,7 +17,7 @@ export const BRAND_LOGO = {
   height: 40,
 };
 
-export const NAVIGATION_CATEGORIES: NavCategory[] = [
+export const NAVIGATION_CATEGORIES: readonly NavCategory[] = [
   {
     id: 'products',
     label: 'Products',
@@ -337,7 +307,7 @@ export const NAVIGATION_CATEGORIES: NavCategory[] = [
           {
             label: 'Custom Internal AI Assistants',
             href: '/services/ai-systems/internal-assistants',
-            tags: 'team copilots support triageslack bots',
+            tags: 'team copilots support triage slack bots',
           },
           {
             label: 'Automated Content & Research Pipelines',
@@ -673,7 +643,7 @@ export const NAVIGATION_CATEGORIES: NavCategory[] = [
 
 export const SEARCH_PROMPT_HEADING = 'What are you looking for?';
 
-export const POPULAR_SEARCH_LINKS: PopularSearchLink[] = [
+export const POPULAR_SEARCH_LINKS: readonly PopularSearchLink[] = [
   {
     label: 'Digital Products & Systems',
     href: '/products/digital',
@@ -710,7 +680,7 @@ export const POPULAR_SEARCH_LINKS: PopularSearchLink[] = [
 
 export const FEATURED_CONTENT_HEADING = 'Featured from Decaspark';
 
-export const FEATURED_CONTENT_ITEMS: FeaturedContentItem[] = [
+export const FEATURED_CONTENT_ITEMS: readonly FeaturedContentItem[] = [
   {
     title: 'The Systems Playbook — Hardcover & Digital Edition',
     description:
@@ -768,4 +738,106 @@ function buildSearchIndex(): SearchEntry[] {
   return entries;
 }
 
-export const SEARCH_INDEX: SearchEntry[] = buildSearchIndex();
+export const SEARCH_INDEX: readonly SearchEntry[] = buildSearchIndex();
+
+const TOP_LEVEL_PILLAR_BY_SEGMENT: Readonly<Record<string, string>> = {
+  products: 'products',
+  services: 'services',
+  teams: 'for-teams',
+  resources: 'resources',
+  support: 'resources',
+  company: 'company',
+};
+
+const PILLAR_DESCRIPTIONS: Readonly<Record<string, string>> = {
+  products:
+    'Digital operating systems, design kits, developer toolkits, authored books, and physical studio goods crafted by Decaspark.',
+  services:
+    'Editorial authorship, creative video production, workflow automation engineering, and custom AI systems for modern organizations.',
+  'for-teams':
+    'Advisory, live workshops, role-specific operating systems, and organization-wide volume licensing.',
+  resources:
+    'Reference architectures, Decaspark Journal publications, book sample chapters, client outcomes, and customer support.',
+  company:
+    'Decaspark operating principles, publishing imprint craft, partnership inquiries, and legal documentation.',
+};
+
+function normalizePath(rawPath: string): string {
+  const withoutQuery = rawPath.split('?')[0]?.split('#')[0] ?? '/';
+  if (!withoutQuery || withoutQuery === '/') return '/';
+  const trimmed = withoutQuery.endsWith('/') ? withoutQuery.slice(0, -1) : withoutQuery;
+  return trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+}
+
+export function resolveCatalogRoute(rawPath: string): ResolvedCatalogRoute | null {
+  const normalized = normalizePath(rawPath);
+  if (normalized === '/' || normalized === '/search') {
+    return null;
+  }
+
+  // 1. Exact match against any internal L3 item across all categories
+  for (const category of NAVIGATION_CATEGORIES) {
+    for (const subcategory of category.subcategories) {
+      const matchedItem: NavLeafItem | undefined = subcategory.items.find(
+        (item) => !item.external && normalizePath(item.href) === normalized,
+      );
+      if (matchedItem) {
+        const isOverview = Boolean(matchedItem.isOverview);
+        return {
+          path: normalized,
+          category,
+          activeSubcategory: subcategory,
+          activeItem: matchedItem,
+          heading: isOverview ? subcategory.label : matchedItem.label,
+          eyebrow: isOverview ? category.label : `${category.label} · ${subcategory.label}`,
+          description: isOverview
+            ? `Explore ${subcategory.label.toLowerCase()} within Decaspark ${category.label}.`
+            : `${matchedItem.label} — part of Decaspark ${subcategory.label}.`,
+        };
+      }
+    }
+  }
+
+  // 2. Top-level pillar directory match (/products, /services, /teams, /resources, /company)
+  const segments = normalized.slice(1).split('/');
+  if (segments.length === 1) {
+    const seg = segments[0];
+    if (seg) {
+      const categoryId = TOP_LEVEL_PILLAR_BY_SEGMENT[seg];
+      const category: NavCategory | undefined = NAVIGATION_CATEGORIES.find(
+        (cat) => cat.id === categoryId,
+      );
+      if (category) {
+        const sub: NavSubcategory | null =
+          seg === 'support'
+            ? (category.subcategories.find((s) => s.id === 'customer-support') ?? null)
+            : null;
+        return {
+          path: normalized,
+          category,
+          activeSubcategory: sub,
+          activeItem: null,
+          heading: sub ? sub.label : category.label,
+          eyebrow: 'Decaspark',
+          description: PILLAR_DESCRIPTIONS[category.id] ?? `Explore Decaspark ${category.label}.`,
+        };
+      }
+    }
+  }
+
+  return null;
+}
+
+export function getAllPublicCatalogPaths(): string[] {
+  const paths = new Set<string>(['/products', '/services', '/teams', '/resources', '/company']);
+  for (const cat of NAVIGATION_CATEGORIES) {
+    for (const sub of cat.subcategories) {
+      for (const item of sub.items) {
+        if (!item.external && item.href.startsWith('/')) {
+          paths.add(normalizePath(item.href));
+        }
+      }
+    }
+  }
+  return Array.from(paths).sort();
+}

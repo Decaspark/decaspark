@@ -1,7 +1,12 @@
 node_modules
 dist
+.angular
 .vite
+.vercel
 .DS_Store
 *.tsbuildinfo
 screenshots
 verify-output
+playwright-report
+test-results
+coverage

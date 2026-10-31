@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - 'arena/**'
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Lint, Typecheck, Unit Tests, Build & E2E
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies cleanly
+        run: npm ci
+
+      - name: Security audit (production dependencies)
+        run: npm audit --omit=dev
+
+      - name: Check formatting (Prettier)
+        run: npm run format:check
+
+      - name: Lint TypeScript & Angular templates (ESLint)
+        run: npm run lint
+
+      - name: TypeScript strict typecheck
+        run: npm run typecheck
+
+      - name: Run unit & component tests (Vitest)
+        run: npm test
+
+      - name: Build production browser, SSR & prerendered bundles
+        run: npm run build
+
+      - name: Install Playwright Chromium browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright E2E, keyboard, responsive & link-integrity tests
+        run: npm run test:e2e

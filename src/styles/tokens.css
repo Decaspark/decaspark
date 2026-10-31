@@ -1,0 +1,45 @@
+/* DecaSpark Semantic Design Tokens & Tailwind CSS 4 Theme Mapping */
+:root {
+  --ds-canvas: #f3f0ee;
+  --ds-surface: #ffffff;
+  --ds-surface-glass: rgba(255, 255, 255, 0.8);
+  --ds-surface-muted: #fcfbfa;
+  --ds-surface-open: #f3f3f3;
+  --ds-surface-hover: #e8e5e1;
+
+  --ds-ink: #141413;
+  --ds-ink-strong: #000000;
+  --ds-ink-secondary: #555250;
+  --ds-ink-muted: #96918b;
+  --ds-ink-subtle: #b1ada6;
+
+  --ds-border: #262627;
+  --ds-border-icon: #333333;
+  --ds-border-subtle: #e8e5e1;
+
+  --ds-radius-pill: 99px;
+  --ds-radius-panel: 40px;
+  --ds-radius-input: 30px;
+  --ds-radius-card: 20px;
+  --ds-radius-teaser: 16px;
+  --ds-radius-logo: 10px;
+
+  --ds-shadow-navbar: 0px 4px 24px 0px rgba(0, 0, 0, 0.04);
+  --ds-font-sans: 'DecasparkSans', 'SofiaSans', Arial, sans-serif;
+}
+
+@theme {
+  --font-sans: 'DecasparkSans', 'SofiaSans', Arial, sans-serif;
+  --color-ds-canvas: #f3f0ee;
+  --color-ds-surface: #ffffff;
+  --color-ds-surface-muted: #fcfbfa;
+  --color-ds-surface-open: #f3f3f3;
+  --color-ds-ink: #141413;
+  --color-ds-ink-secondary: #555250;
+  --color-ds-ink-muted: #96918b;
+  --color-ds-border: #262627;
+  --color-ds-border-subtle: #e8e5e1;
+  --radius-pill: 99px;
+  --radius-panel: 40px;
+  --radius-card: 20px;
+}
