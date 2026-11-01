@@ -682,7 +682,7 @@ export const FEATURED_CONTENT_HEADING = 'Featured from Decaspark';
 
 export const FEATURED_CONTENT_ITEMS: readonly FeaturedContentItem[] = [
   {
-    title: 'The Systems Playbook — Hardcover & Digital Edition',
+    title: 'The Systems Playbook: Hardcover & Digital Edition',
     description:
       'An authored manual from Decaspark Press on designing resilient team workflows, documentation, and automation that compound.',
     href: '/products/books/strategy-books',
@@ -792,7 +792,7 @@ export function resolveCatalogRoute(rawPath: string): ResolvedCatalogRoute | nul
           eyebrow: isOverview ? category.label : `${category.label} · ${subcategory.label}`,
           description: isOverview
             ? `Explore ${subcategory.label.toLowerCase()} within Decaspark ${category.label}.`
-            : `${matchedItem.label} — part of Decaspark ${subcategory.label}.`,
+            : `${matchedItem.label}, part of Decaspark ${subcategory.label}.`,
         };
       }
     }

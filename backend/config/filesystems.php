@@ -13,7 +13,7 @@ return [
             'throw' => true,
         ],
 
-        // Isolated private Cloudflare R2 / S3 vault — never publicly readable or hotlinkable
+        // Isolated private Cloudflare R2 / S3 vault (never publicly readable or hotlinkable)
         'r2_private' => [
             'driver' => 's3',
             'key' => env('R2_ACCESS_KEY_ID'),

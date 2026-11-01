@@ -57,7 +57,7 @@ export class NotFoundPageComponent {
       this.responseInit.status = 404;
     }
     this.seo.update({
-      title: 'Page Not Found — Decaspark',
+      title: 'Page Not Found | Decaspark',
       description: 'The requested page could not be found on Decaspark.',
       path: this.router.url,
       noindex: true,

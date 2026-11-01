@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('Decaspark Angular Application — E2E, Accessibility, Responsive & SEO', () => {
+test.describe('Decaspark Angular Application: E2E, Accessibility, Responsive & SEO', () => {
   test('hydrates cleanly on desktop without console or Angular hydration errors and navigates SPA routes', async ({
     page,
   }) => {
@@ -37,7 +37,7 @@ test.describe('Decaspark Angular Application — E2E, Accessibility, Responsive 
     await page.click('a[href="/products/books/strategy-books"]');
     await expect(page).toHaveURL('/products/books/strategy-books');
     await expect(page.locator('main h1')).toHaveText('Authored Technical & Strategy Books');
-    await expect(page).toHaveTitle('Authored Technical & Strategy Books — Decaspark');
+    await expect(page).toHaveTitle('Authored Technical & Strategy Books | Decaspark');
 
     expect(consoleErrors).toEqual([]);
   });

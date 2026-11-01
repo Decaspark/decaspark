@@ -62,7 +62,7 @@ final readonly class PaymentWebhookController
             decodedPayload: $decoded,
         );
 
-        // Duplicate delivery on upstream retry — acknowledge 200 OK so the provider stops retrying
+        // Duplicate delivery on upstream retry: acknowledge 200 OK so the provider stops retrying
         if ($claimedEvent === null) {
             return new JsonResponse(['status' => 'duplicate_ignored'], 200);
         }
