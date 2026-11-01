@@ -1,4 +1,4 @@
-# DecaSpark: Angular 22 Migration & Architecture Modernization
+# Decaspark: Angular 22 Migration & Architecture Modernization
 
 ## 1. Baseline Audit (Legacy Stack at Commit `50fe081`)
 
@@ -27,7 +27,7 @@
 
 ## 2. Preserved Brand, Content & URL Inventory
 
-All legitimate DecaSpark brand assets, monochrome `#141413` / `#f3f0ee` / `#ffffff` visual tokens, `DecasparkSans` geometric sans typography, responsive breakpoints (`939px` / `940px`), and catalog items were preserved without introducing synthetic statistics or placeholder products:
+All legitimate Decaspark brand assets, monochrome `#141413` / `#f3f0ee` / `#ffffff` visual tokens, `DecasparkSans` geometric sans typography, responsive breakpoints (`939px` / `940px`), and catalog items were preserved without introducing synthetic statistics or placeholder products:
 
 - **Brand Emblem**: `/images/decaspark-emblem.png` (`44×40` desktop, `36×33` centered mobile)
 - **Primary L1 Pillars (`5`)**: `Products`, `Services`, `For Teams`, `Resources`, `Company` (hover underline strictly scoped to L1 buttons)
@@ -35,7 +35,7 @@ All legitimate DecaSpark brand assets, monochrome `#141413` / `#f3f0ee` / `#ffff
   - `90` internal routes across `/products/**`, `/services/**`, `/teams/**`, `/resources/**`, `/support/**`, and `/company/**`
   - `1` external link (`https://github.com/Decaspark`, secured with `target="_blank" rel="noopener noreferrer"` and screen-reader announcement)
 - **Instant Search Index (`91` deduplicated entries)**:
-  - Pre-query discovery panel (`8` popular destination links + `3` featured DecaSpark Press / Automation / Enablement cards)
+  - Pre-query discovery panel (`8` popular destination links + `3` featured Decaspark Press / Automation / Enablement cards)
   - Live client-side combobox filtering + `/search?q=...` dedicated search results route
 
 ---
