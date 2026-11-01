@@ -1,6 +1,6 @@
-# DecaSpark
+# Decaspark
 
-Modernized **Angular 22** web application for **DecaSpark**, featuring digital operating systems, design kits, authored strategy books, editorial production, and custom AI workflow automation for modern teams.
+Modernized **Angular 22** web application for **Decaspark**, featuring digital operating systems, design kits, authored strategy books, editorial production, and custom AI workflow automation for modern teams.
 
 ## Tech Stack
 
