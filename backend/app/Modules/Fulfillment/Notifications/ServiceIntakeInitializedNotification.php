@@ -31,7 +31,7 @@ final class ServiceIntakeInitializedNotification extends Notification implements
         $portalUrl = rtrim((string) config('decaspark.frontend_url'), '/') . "/intake/{$this->intake->workspace_slug}";
 
         return (new MailMessage())
-            ->subject('Decaspark Studio — Your Technical Intake Workspace Is Ready')
+            ->subject('Decaspark Studio: Your Technical Intake Workspace Is Ready')
             ->greeting('Welcome to Decaspark.')
             ->line("Your dedicated service engagement workspace ({$this->intake->workspace_slug}) has been initialized.")
             ->action('Complete Technical Discovery Intake', $portalUrl)

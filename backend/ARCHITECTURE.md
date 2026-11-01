@@ -64,9 +64,9 @@ Three isolated Redis queues prevent slow third-party print/logistics calls from 
 
 | Queue | Worker Responsibility | Retries (`$tries`) | Exponential Backoff |
 | --- | --- | --- | --- |
-| `payments` | `ProcessVerifiedOrderPaymentJob` — marks order `paid`, mints signed download tokens & team licenses, fans out downstream jobs `afterCommit()` | `3` | `[5s, 30s, 120s]` |
-| `intakes` | `InitializeServiceIntakeJob` — provisions `service_intakes` client workspace & sends onboarding email | `3` | `[10s, 45s, 180s]` |
-| `logistics` | `DispatchPhysicalShipmentJob` — dispatches physical book/journal payloads to print/3PL partner with `Idempotency-Key` | `3` | `[15s, 60s, 300s]` |
+| `payments` | `ProcessVerifiedOrderPaymentJob`: marks order `paid`, mints signed download tokens & team licenses, fans out downstream jobs `afterCommit()` | `3` | `[5s, 30s, 120s]` |
+| `intakes` | `InitializeServiceIntakeJob`: provisions `service_intakes` client workspace & sends onboarding email | `3` | `[10s, 45s, 180s]` |
+| `logistics` | `DispatchPhysicalShipmentJob`: dispatches physical book/journal payloads to print/3PL partner with `Idempotency-Key` | `3` | `[15s, 60s, 300s]` |
 
 Recommended Supervisor / Horizon worker invocation:
 

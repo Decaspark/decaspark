@@ -115,7 +115,7 @@ final readonly class CheckoutController
                     'product_id' => $variant->product_id,
                     'product_variant_id' => $variant->id,
                     'sku_snapshot' => $variant->sku,
-                    'title_snapshot' => "{$variant->product?->title} — {$variant->name}",
+                    'title_snapshot' => "{$variant->product?->title}: {$variant->name}",
                     'fulfillment_type' => $variant->fulfillment_type,
                     'quantity' => $line['quantity'],
                     'unit_price_cents' => $variant->price_cents,

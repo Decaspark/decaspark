@@ -186,7 +186,7 @@ export class CatalogPageComponent {
       const route = this.resolvedRoute();
       if (route) {
         this.seo.update({
-          title: `${route.heading} — Decaspark`,
+          title: `${route.heading} | Decaspark`,
           description: route.description,
           path: route.path,
         });
@@ -195,7 +195,7 @@ export class CatalogPageComponent {
           this.responseInit.status = 404;
         }
         this.seo.update({
-          title: 'Page Not Found — Decaspark',
+          title: 'Page Not Found | Decaspark',
           description: 'The requested page could not be found on Decaspark.',
           path: this.currentUrl(),
           noindex: true,

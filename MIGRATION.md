@@ -1,4 +1,4 @@
-# DecaSpark — Angular 22 Migration & Architecture Modernization
+# DecaSpark: Angular 22 Migration & Architecture Modernization
 
 ## 1. Baseline Audit (Legacy Stack at Commit `50fe081`)
 
@@ -16,7 +16,7 @@
 | **Routing** | None (clicking any of the `90` internal links or submitting search triggered full-page browser reloads / missing views) | Lazy-loaded Angular Router with `canMatch` catalog guard, parameterized routes, query-param search, and HTTP `404` status handling |
 | **Change Detection** | React virtual DOM reconciliation | **Zoneless** Angular Signals (`signal`, `computed`, `input`, `output`, `viewChild`) + `ChangeDetectionStrategy.OnPush` everywhere (`no zone.js`) |
 | **Component Structure** | Monolithic `1,082`-line `Navbar.tsx` directly mutating `document.body` and `window.location.href` | Modular feature-first architecture (`NavbarComponent`, `NavbarMegaMenuComponent`, `NavbarSearchPanelComponent`, `ShellComponent`, DI services) |
-| **Fonts & Asset Payload** | `8` bundled `sofia-sans-*.woff2` files (`203.24 kB`) + `4` `DecasparkSans-*.woff2` (`61 kB`) + `3` redundant `.ttf` files | `4` `DecasparkSans-*.woff2` (`61 kB`, primary weights preloaded) + `1` Latin-only `SofiaSans` fallback (`40.37 kB`) — **eliminated `162.87 kB` (`80%`) of unused font subsets** and removed duplicate `.ttf` files |
+| **Fonts & Asset Payload** | `8` bundled `sofia-sans-*.woff2` files (`203.24 kB`) + `4` `DecasparkSans-*.woff2` (`61 kB`) + `3` redundant `.ttf` files | `4` `DecasparkSans-*.woff2` (`61 kB`, primary weights preloaded) + `1` Latin-only `SofiaSans` fallback (`40.37 kB`), **eliminating `162.87 kB` (`80%`) of unused font subsets** and removing duplicate `.ttf` files |
 | **Global Stylesheet** | `46.11 kB` raw (`13.19 kB` gzip) | `15.31 kB` raw (`3.64 kB` gzip) global Tailwind CSS 4 + semantic CSS custom properties (`tokens.css`), plus critical CSS inlining |
 | **SEO & Crawlability** | Single static `<title>`, no meta description per route, no canonicals, no `robots.txt`, no `sitemap.xml` | Per-route `SeoService` (`Title`, `Meta`, Open Graph, canonical `<link>`), `noindex` on `404`, `public/robots.txt`, `public/sitemap.xml` (`95` canonical URLs) |
 | **Automated Testing** | `0` unit tests, `0` E2E tests | **16** Vitest unit/component tests + **5** Playwright E2E/keyboard/responsive/link-integrity suites |

@@ -20,12 +20,12 @@ describe('SeoService', () => {
 
   it('sets document title, Open Graph tags, and canonical URL for public pages', () => {
     seo.update({
-      title: 'Books & Print Editions — Decaspark',
+      title: 'Books & Print Editions | Decaspark',
       description: 'Authored technical and strategy books from Decaspark Press.',
       path: '/products/books',
     });
 
-    expect(title.getTitle()).toBe('Books & Print Editions — Decaspark');
+    expect(title.getTitle()).toBe('Books & Print Editions | Decaspark');
     expect(meta.getTag('name="description"')?.content).toContain('Decaspark Press');
     expect(meta.getTag('property="og:url"')?.content).toBe('https://decaspark.com/products/books');
     expect(meta.getTag('name="robots"')?.content).toBe('index, follow');
@@ -36,7 +36,7 @@ describe('SeoService', () => {
 
   it('marks 404 pages noindex and removes canonical link', () => {
     seo.update({
-      title: 'Page Not Found — Decaspark',
+      title: 'Page Not Found | Decaspark',
       description: 'Not found.',
       path: '/missing-route',
       noindex: true,

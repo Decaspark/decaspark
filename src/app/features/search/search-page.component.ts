@@ -201,7 +201,7 @@ export class SearchPageComponent {
     effect(() => {
       const q = this.trimmedQuery();
       this.seo.update({
-        title: q ? `Search: ${q} — Decaspark` : 'Search — Decaspark',
+        title: q ? `Search: ${q} | Decaspark` : 'Search | Decaspark',
         description:
           'Search Decaspark digital operating systems, books, creative studio services, team enablement, and automation resources.',
         path: '/search',
